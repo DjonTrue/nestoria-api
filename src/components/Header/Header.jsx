@@ -4,15 +4,13 @@ import SelectingCategory from "../SelectingCategory/SelectingCategory";
 
 import "./Header.css";
 
-const Header = ({ items }) => {
-    return (
-        <div className="navbar navbar-expand-lg navbar-light bg-light">
-            <div className="navbar-categories">
-                <SelectingCategory selectingItems={items} />
-            </div>
-            <SearchField />
+const Header = () => (
+    <div className="navbar navbar-expand-lg navbar-light bg-light">
+        <div className="navbar-categories">
+            <SelectingCategory />
         </div>
-    );
-};
+        <SearchField />
+    </div>
+);
 
 export default Header;

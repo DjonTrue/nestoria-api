@@ -1,4 +1,4 @@
-const сharactersApi = async (url) => {
+const getCharactersData = async (url) => {
     let error = null;
     let isLoaded = false;
     let items = [];
@@ -26,4 +26,4 @@ const сharactersApi = async (url) => {
     }
 };
 
-export default сharactersApi;
+export default getCharactersData;
