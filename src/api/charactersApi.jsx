@@ -1,39 +1,29 @@
-import React, { useState, useEffect } from "react";
+const сharactersApi = async (url) => {
+    let error = null;
+    let isLoaded = false;
+    let items = [];
 
-const CharactersApi = () => {
-    const [error, setError] = useState(null);
-    const [isLoaded, setIsLoaded] = useState(false);
-    const [items, setItems] = useState([]);
+    await fetch(url)
+        .then((res) => res.json())
+        .then(
+            (result) => {
+                isLoaded = true;
+                items = result.results;
+            },
 
-    useEffect(() => {
-        fetch("https://rickandmortyapi.com/api/character")
-            .then((res) => res.json())
-            .then(
-                (result) => {
-                    setIsLoaded(true);
-                    setItems(result.results);
-                },
-
-                (error) => {
-                    setIsLoaded(true);
-                    setError(error);
-                },
-            );
-}, [])
-    
-    if (error) {
-        return <div>Ошибка: {error.message}</div>;
-    } else if (!isLoaded) {
-        return <div>Загрузка...</div>;
-    } else {
-        return (
-            <ul>
-                {items.map((item) => (
-                    <li key={item.id}>{item.name} <img src={item.image}></img></li>
-                ))}
-            </ul>
+            (resultError) => {
+                isLoaded = true;
+                error = resultError;
+            },
         );
+
+    if (error) {
+        return error.message;
+    } else if (!isLoaded) {
+        return console.log("loading...");
+    } else {
+        return items;
     }
 };
 
-export default CharactersApi;
+export default сharactersApi;
