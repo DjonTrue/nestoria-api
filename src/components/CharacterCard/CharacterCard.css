@@ -1,0 +1,8 @@
+.card-body {
+    display: flex;
+}
+
+.card-text,
+.card-header {
+    font-size: x-large;
+}
