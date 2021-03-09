@@ -1,5 +1,11 @@
 .card-body {
     display: flex;
+    padding-bottom: 15px;
+}
+
+.btn-card{
+    width: 17%;
+    margin-bottom: 10px;
 }
 
 .card-text,

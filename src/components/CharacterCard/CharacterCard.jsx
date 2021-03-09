@@ -12,6 +12,10 @@ const CharacterCard = () => {
         });
     }, []);
 
+    const addCharacterToBookmarks = (characterId) => {
+        console.log(characterId)
+    }
+
     return items.map((item, index) => (
         <div key={`${item}_${index}`} className="card text-white bg-secondary mb-3">
             <div className="card-header">{item.name}</div>
@@ -21,8 +25,13 @@ const CharacterCard = () => {
                     <li className="card-text">{item.status}</li>
                     <li className="card-text">{item.species}</li>
                     <li className="card-text">{item.gender}</li>
-                </ul>
+                </ul>  
             </div>
+            <button type="button" className="btn btn-card btn-primary">View full info</button>
+            <button type="button"
+                className="btn btn-card btn-success"
+                onClick={() => addCharacterToBookmarks(item.id)}
+            >Add to bookmark</button>
         </div>
     ));
 };
