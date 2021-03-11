@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import getCharactersData from "../../api/appApi";
+import { useDispatch } from "react-redux";
+import { setBookmarks } from "../../redux/actions/bookmarksActions";
 
 import "./CharacterCard.css";
 
 const CharacterCard = () => {
+    const dispatch = useDispatch();
     const [items, setItems] = useState([]);
 
     useEffect(() => {
@@ -12,9 +15,9 @@ const CharacterCard = () => {
         });
     }, []);
 
-    const addCharacterToBookmarks = (characterId) => {
-        console.log(characterId)
-    }
+    const addCharacterToBookmarks = (character) => {
+        dispatch(setBookmarks(character));
+    };
 
     return items.map((item, index) => (
         <div key={`${item}_${index}`} className="card text-white bg-secondary mb-3">
@@ -25,13 +28,18 @@ const CharacterCard = () => {
                     <li className="card-text">{item.status}</li>
                     <li className="card-text">{item.species}</li>
                     <li className="card-text">{item.gender}</li>
-                </ul>  
+                </ul>
             </div>
-            <button type="button" className="btn btn-card btn-primary">View full info</button>
-            <button type="button"
+            <button type="button" className="btn btn-card btn-primary">
+                View full info
+            </button>
+            <button
+                type="button"
                 className="btn btn-card btn-success"
-                onClick={() => addCharacterToBookmarks(item.id)}
-            >Add to bookmark</button>
+                onClick={() => addCharacterToBookmarks(item)}
+            >
+                Add to bookmark
+            </button>
         </div>
     ));
 };
