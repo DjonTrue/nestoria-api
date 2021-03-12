@@ -6,7 +6,7 @@ const Bookmarks = () => {
 
     return (
         <div>
-            {!bookmarksItems.length == 0 &&
+            {!!bookmarksItems.length &&
                 bookmarksItems.map((item, index) => {
                     return (
                         <div key={`${item}_${index}`} className="card text-white bg-secondary mb-3">
