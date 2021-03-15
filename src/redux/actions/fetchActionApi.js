@@ -1,29 +1,10 @@
-const getCharactersData = async (url) => {
-    let error = null;
-    let isLoaded = false;
-    let items = [];
+import axios from "axios";
+import { setCharactersCard } from "./charactersCardActions";
 
-    await fetch(url)
-        .then((res) => res.json())
-        .then(
-            (result) => {
-                isLoaded = true;
-                items = result.results;
-            },
-
-            (resultError) => {
-                isLoaded = true;
-                error = resultError;
-            },
-        );
-
-    if (error) {
-        return error.message;
-    } else if (!isLoaded) {
-        return console.log("loading...");
-    } else {
-        return items;
-    }
+const getCharactersData = (url) => async (dispatch) => {
+    axios.get(url).then(({ data }) => {
+        dispatch(setCharactersCard(data.results));
+    });
 };
 
 export default getCharactersData;
