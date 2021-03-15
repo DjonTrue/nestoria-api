@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import getCharactersData from "../../api/appApi";
 import { useDispatch } from "react-redux";
+import getCharactersData from "../../redux/actions/fetchActionApi";
 import { setBookmarks } from "../../redux/actions/bookmarksActions";
 import CharactersButton from "./CharactersButton/CharactersButton";
 
