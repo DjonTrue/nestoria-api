@@ -1,8 +1,8 @@
 import axios from "axios";
 import { setCharactersCard } from "./charactersCardActions";
 
-const getCharactersData = (url) => async (dispatch) => {
-    axios.get(url).then(({ data }) => {
+const getCharactersData = ({ page }) => (dispatch) => {
+    axios.get(`https://rickandmortyapi.com/api/character/?page=${page}`).then(({ data }) => {
         dispatch(setCharactersCard(data.results));
     });
 };

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import getCharactersData from "../../redux/actions/fetchActionApi";
 import { setBookmarks } from "../../redux/actions/bookmarksActions";
@@ -11,12 +11,12 @@ const CharacterCard = () => {
     const { items } = useSelector((state) => state.characters);
 
     useEffect(() => {
-        dispatch(getCharactersData("https://rickandmortyapi.com/api/character"));
+        dispatch(getCharactersData({ page: 1 }));
     }, []);
 
-    const addCharacterToBookmarks = (character) => {
+    const addCharacterToBookmarks = useCallback((character) => {
         dispatch(setBookmarks(character));
-    };
+    }, []);
 
     return (
         <div>
