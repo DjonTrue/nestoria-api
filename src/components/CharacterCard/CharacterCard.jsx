@@ -14,7 +14,7 @@ const CharacterCard = () => {
     const [numberOfModalCharacter, setNumberOfModalCharacter] = useState(null);
 
     useEffect(() => {
-        dispatch(getCharactersData({ page: 11 }));
+        dispatch(getCharactersData({ page: 1 }));
     }, []);
 
     const addCharacterToBookmarks = useCallback((character) => {
@@ -26,9 +26,9 @@ const CharacterCard = () => {
         setNumberOfModalCharacter(index.target.id);
     };
 
-    const closeModal = () => {
+    const closeModal = useCallback(() => {
         setmodal(false);
-    };
+    }, [setmodal]);
 
     return (
         <div>
