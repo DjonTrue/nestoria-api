@@ -1,0 +1,45 @@
+.modal-wrapper {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(2px);
+}
+
+.modal-wrapper.open {
+    height: 100%;
+    display: block;
+}
+
+.modal-wrapper.close {
+    height: 0;
+    display: none;
+}
+
+.modal-body {
+    max-width: 500px;
+    margin: auto;
+    background: white;
+    margin-top: 5%;
+    padding: 20px;
+    border-radius: 10px;
+    max-height: 700px;
+}
+
+.modal-close {
+    text-align: right;
+    font-size: 20px;
+    margin-top: -15px;
+    color: gray;
+    cursor: pointer;
+}
+
+.modal-body h1 {
+    font-size: 25px;
+}
+
+.modal-image {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+}
